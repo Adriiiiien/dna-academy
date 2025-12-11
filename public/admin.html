@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DNA Academy - Admin</title>
+  <link rel="icon" type="image/png" href="assets/images/logo-yellow.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <div id="header-placeholder"></div>
+
+  <main>
+    <section id="admin-form-container">
+      <h1>Add a character</h1>
+
+      <form id="add-character-form">
+        <div class="form-group">
+          <label for="char-id">ID (ex: c021)</label>
+          <input type="text" id="char-id" required>
+        </div>
+
+        <div class="form-group">
+          <label for="char-name">Name</label>
+          <input type="text" id="char-name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="char-element">Element (ex: Pyro)</label>
+          <input type="text" id="char-element" required>
+        </div>
+
+        <div class="form-group">
+          <label for="char-icon-url">URL Big size image (Icon)</label>
+          <input type="text" id="char-icon-url" placeholder="assets/images/...">
+        </div>
+
+        <div class="form-group">
+          <label for="char-card-url">URL Small size image (Card)</label>
+          <input type="text" id="char-card-url" placeholder="assets/images...">
+        </div>
+
+        <button type="submit" class="submit-btn">Add the character</button>
+      </form>
+
+      <p id="form-message"></p>
+
+      <section class="admin-list-container">
+        <h2>Manage all the characters</h2>
+
+        <div id="management-list">
+          <p>The list is loading...</p>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/session.js"></script>
+  <script src="js/header-effect.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

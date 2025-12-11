@@ -1,0 +1,80 @@
+//font-family
+$font-family-heading: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+$font-family-base: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+// font-size
+$font-size-base: 1rem;
+$font-size-small: 0.875rem;
+$font-size-large: 1.125rem;
+$font-size-h1: 2.5rem;
+$font-size-h2: 2rem;
+$font-size-h3: 1.5rem;
+
+// font-weight
+$font-weight-regular: 400;
+$font-weight-bold: 700;
+
+// font-space
+$space-xs: 0.25rem;
+$space-sm: 0.5rem;
+$space-md: 1rem;
+$space-lg: 1.5rem;
+$space-xl: 2rem;
+$space-xxl: 2.5rem;
+
+// color
+$hue-dark-blue: #1a1a2e;
+$hue-mid-blue: #2a2a4e;
+$hue-light-blue: #4a4a7f;
+$hue-white: #ffffff;
+$hue-off-white: #e0e0e0;
+$hue-gold: #ffd700;
+$hue-purple: #b17ff0;
+$hue-red-error: #ff6b6b;
+$hue-black-shadow: rgba(0, 0, 0, 0.3);
+
+$color-text-base: $hue-off-white;
+$color-text-heading: $hue-white;
+
+$color-bg-page: $hue-dark-blue;
+$color-bg-dark: #050508;
+$color-bg-card: $hue-mid-blue;
+
+$color-border-primary: $hue-light-blue;
+$color-shadow-primary: $hue-black-shadow;
+$color-state-error: $hue-red-error;
+
+$color-rarity-5: $hue-gold;
+$color-rarity-4: $hue-purple;
+
+// characters-elements-color
+$hue-pyro: #d33d3e;
+$hue-anemo: #60bf7a;
+$hue-hydro: #4964ba;
+$hue-lumino: #f0c74f;
+$hue-electro: #ac51e7;
+$hue-umbro: #aa3d65;
+
+$element-colors: (
+  "Pyro": $hue-pyro,
+  "Anemo": $hue-anemo,
+  "Hydro": $hue-hydro,
+  "Lumino": $hue-lumino,
+  "Electro": $hue-electro,
+  "Umbro": $hue-umbro
+);
+
+// border-radius
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 16px;
+$border-radius-xl: 24px;
+
+// reponsive
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+// header-height
+$header-height: 73px;

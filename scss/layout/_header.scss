@@ -1,0 +1,205 @@
+// layout et effets du header : position fixe, logo, navigation, burger mobile
+
+@use '../base/variables' as *;
+
+// barre de navigation fixe en haut de page
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: $space-md 0;
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+  transition: all 0.4s ease;
+
+  // état une fois la page scrollée (fond opaque + blur)
+  &.scrolled {
+    background-color: rgba($color-bg-dark, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba($color-border-primary, 0.3);
+    padding: $space-sm 0;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  }
+}
+
+// contenu interne du header (logo + nav)
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $space-lg;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// logo du site (texte + icône)
+.site-logo {
+  font-family: $font-family-heading;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: $hue-lumino;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  z-index: 1001;
+}
+
+.site-logo {
+  display: flex;
+  align-items: center;
+  gap: $space-md;
+}
+
+.site-logo__img {
+  height: 34px;
+  fill: red;
+  width: auto;
+  flex-shrink: 0;
+}
+
+.site-logo__text {
+  display: inline-block;
+}
+
+// navigation principale (desktop)
+.main-nav {
+  ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: $space-xl;
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    position: relative;
+    text-decoration: none;
+    color: $color-text-base;
+    font-family: $font-family-heading;
+    font-weight: bold;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: $space-xs 0;
+    transition: color 0.3s ease;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background-color: $hue-lumino;
+      transition: width 0.3s ease;
+    }
+
+    &:hover, &.active {
+      color: $hue-lumino;
+      &::after { width: 100%; }
+    }
+  }
+}
+
+// éléments de navigation liés à l'auth (affichés en js)
+#nav-admin-item,
+#nav-logout-item {
+  display: none;
+}
+
+#nav-logout-item {
+  display: flex;
+  align-items: center;
+  gap: $space-lg;
+}
+
+.nav-username {
+  font-family: $font-family-heading;
+  font-size: $font-size-small;
+  color: $color-text-base;
+  opacity: 0.75;
+  white-space: nowrap;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+// bouton burger pour l'affichage mobile
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 9999;
+
+  .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: $hue-lumino;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+  }
+
+  &.active {
+    .bar:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+    .bar:nth-child(2) { opacity: 0; }
+    .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+  }
+}
+
+// adaptation en mode mobile / tablette
+@media (max-width: 1200px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .main-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    background-color: rgba($color-bg-dark, 0.95);
+    backdrop-filter: blur(15px);
+    padding-top: 100px;
+    padding-bottom: 100px;
+    transition: right 0.4s ease-in-out;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+
+    ul {
+      flex-direction: column;
+      align-items: center;
+      gap: $space-lg;
+    }
+
+    a {
+      font-size: 1.5rem;
+    }
+
+    &.active {
+      right: 0;
+    }
+  }
+
+  #nav-logout-item {
+    justify-content: center;
+    gap: $space-md;
+  }
+
+  .nav-username {
+    font-size: 1rem;
+    opacity: 0.85;
+  }
+}
+
+// réduction du logo sur petits écrans
+@media (max-width: 768px) {
+  .site-logo {
+    font-size: 1.2rem;
+  }
+}

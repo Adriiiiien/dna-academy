@@ -1,0 +1,1788 @@
+@charset "UTF-8";
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  line-height: 1.5;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img,
+picture,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
+  outline: none;
+}
+
+body {
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  background-color: #1a1a2e;
+  color: #e0e0e0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+main {
+  padding-top: 73px;
+  margin: 0 auto;
+}
+
+.error-message {
+  color: #ff6b6b;
+  text-align: center;
+  background-color: rgba(255, 107, 107, 0.1);
+  padding: 1rem;
+  border: 1px solid #ff6b6b;
+  border-radius: 4px;
+}
+
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 1rem 0;
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+  transition: all 0.4s ease;
+}
+.main-header.scrolled {
+  background-color: rgba(5, 5, 8, 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(74, 74, 127, 0.3);
+  padding: 0.5rem 0;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-logo {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #f0c74f;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  z-index: 1001;
+}
+
+.site-logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.site-logo__img {
+  height: 34px;
+  fill: red;
+  width: auto;
+  flex-shrink: 0;
+}
+
+.site-logo__text {
+  display: inline-block;
+}
+
+.main-nav ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+.main-nav a {
+  position: relative;
+  text-decoration: none;
+  color: #e0e0e0;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 0.25rem 0;
+  transition: color 0.3s ease;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #f0c74f;
+  transition: width 0.3s ease;
+}
+.main-nav a:hover, .main-nav a.active {
+  color: #f0c74f;
+}
+.main-nav a:hover::after, .main-nav a.active::after {
+  width: 100%;
+}
+
+#nav-admin-item,
+#nav-logout-item {
+  display: none;
+}
+
+#nav-logout-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-username {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.875rem;
+  color: #e0e0e0;
+  opacity: 0.75;
+  white-space: nowrap;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 9999;
+}
+.hamburger .bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #f0c74f;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+.hamburger.active .bar:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+.hamburger.active .bar:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active .bar:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+@media (max-width: 1200px) {
+  .hamburger {
+    display: flex;
+  }
+  .main-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    background-color: rgba(5, 5, 8, 0.95);
+    backdrop-filter: blur(15px);
+    padding-top: 100px;
+    padding-bottom: 100px;
+    transition: right 0.4s ease-in-out;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+  }
+  .main-nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .main-nav a {
+    font-size: 1.5rem;
+  }
+  .main-nav.active {
+    right: 0;
+  }
+  #nav-logout-item {
+    justify-content: center;
+    gap: 1rem;
+  }
+  .nav-username {
+    font-size: 1rem;
+    opacity: 0.85;
+  }
+}
+@media (max-width: 768px) {
+  .site-logo {
+    font-size: 1.2rem;
+  }
+}
+.main-footer {
+  background-color: rgb(11.2666666667, 11.2666666667, 19.9333333333);
+  color: #e0e0e0;
+  border-top: 1px solid rgba(240, 199, 79, 0.1);
+  font-size: 0.95rem;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  align-items: center;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+  align-items: flex-start;
+}
+@media (min-width: 900px) {
+  .footer-column:nth-child(1) {
+    align-items: flex-start;
+    text-align: left;
+  }
+  .footer-column:nth-child(2) {
+    align-items: center;
+    text-align: center;
+  }
+  .footer-column:nth-child(3) {
+    align-items: flex-end;
+    text-align: right;
+  }
+}
+
+.branding .footer-logo {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.5rem;
+  color: #f0c74f;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.branding .footer-logo__img {
+  height: 28px;
+  width: auto;
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.35));
+}
+.branding .footer-logo__text {
+  display: inline-block;
+}
+.branding .footer-tagline {
+  opacity: 0.7;
+  line-height: 1.6;
+  max-width: 300px;
+}
+
+.footer-title {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.1rem;
+  color: white;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.footer-links li a {
+  text-decoration: none;
+  color: #e0e0e0;
+  opacity: 0.6;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.footer-links li a:hover {
+  opacity: 1;
+  color: #f0c74f;
+}
+
+.footer-bottom {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.footer-bottom span {
+  opacity: 0.5;
+}
+@media (max-width: 576px) {
+  .footer-bottom {
+    justify-content: center;
+  }
+}
+
+.footer-admin-link {
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: #e0e0e0;
+  opacity: 0.5;
+  transition: all 0.2s ease;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.footer-admin-link:hover {
+  opacity: 1;
+  color: #f0c74f;
+}
+
+.character-card {
+  background-color: #2a2a4e;
+  border-radius: 8px;
+  border: 1px solid #4a4a7f;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.character-card:hover {
+  transform: translateY(-5px);
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+.character-card .card-image-wrapper {
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+}
+@media (min-width: 768px) {
+  .character-card .card-image-wrapper {
+    height: 220px;
+  }
+}
+.character-card .card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.5s ease;
+}
+.character-card:hover .card-image {
+  transform: scale(1.05);
+}
+.character-card .card-content {
+  padding: 4px 2px;
+  text-align: center;
+  background-color: rgba(26, 26, 46, 0.5);
+}
+@media (min-width: 768px) {
+  .character-card .card-content {
+    padding: 1rem;
+  }
+}
+.character-card .card-title {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.8rem;
+  margin: 0 0 4px 0;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (min-width: 768px) {
+  .character-card .card-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+}
+.character-card .card-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+@media (min-width: 768px) {
+  .character-card .card-detail {
+    gap: 6px;
+  }
+}
+.character-card .element-tag,
+.character-card .weapon-type-tag {
+  font-size: 0.65rem;
+  font-weight: bold;
+  padding: 1px 6px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+@media (min-width: 768px) {
+  .character-card .element-tag,
+  .character-card .weapon-type-tag {
+    font-size: 0.9rem;
+    padding: 2px 8px;
+    border-radius: 12px;
+  }
+}
+.character-card .element-tag {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.character-card .weapon-type-tag {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+}
+.character-card[data-element=Pyro] {
+  border-color: #d33d3e;
+}
+.character-card[data-element=Pyro] .element-tag {
+  color: #d33d3e;
+}
+.character-card[data-element=Pyro]:hover {
+  box-shadow: 0 0 20px rgba(211, 61, 62, 0.3);
+}
+.character-card[data-element=Anemo] {
+  border-color: #60bf7a;
+}
+.character-card[data-element=Anemo] .element-tag {
+  color: #60bf7a;
+}
+.character-card[data-element=Anemo]:hover {
+  box-shadow: 0 0 20px rgba(96, 191, 122, 0.3);
+}
+.character-card[data-element=Hydro] {
+  border-color: #4964ba;
+}
+.character-card[data-element=Hydro] .element-tag {
+  color: #4964ba;
+}
+.character-card[data-element=Hydro]:hover {
+  box-shadow: 0 0 20px rgba(73, 100, 186, 0.3);
+}
+.character-card[data-element=Lumino] {
+  border-color: #f0c74f;
+}
+.character-card[data-element=Lumino] .element-tag {
+  color: #f0c74f;
+}
+.character-card[data-element=Lumino]:hover {
+  box-shadow: 0 0 20px rgba(240, 199, 79, 0.3);
+}
+.character-card[data-element=Electro] {
+  border-color: #ac51e7;
+}
+.character-card[data-element=Electro] .element-tag {
+  color: #ac51e7;
+}
+.character-card[data-element=Electro]:hover {
+  box-shadow: 0 0 20px rgba(172, 81, 231, 0.3);
+}
+.character-card[data-element=Umbro] {
+  border-color: #aa3d65;
+}
+.character-card[data-element=Umbro] .element-tag {
+  color: #aa3d65;
+}
+.character-card[data-element=Umbro]:hover {
+  box-shadow: 0 0 20px rgba(170, 61, 101, 0.3);
+}
+
+.page-intro {
+  background-color: #2a2a4e;
+  padding: 4rem 0;
+  text-align: center;
+  border-bottom: 1px solid #4a4a7f;
+  margin-bottom: 2rem;
+}
+
+.intro-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+.intro-content h1 {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 3rem;
+  color: #f0c74f;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.intro-content p {
+  font-size: 1.2rem;
+  color: #e0e0e0;
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
+#filters-section {
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+  padding: 0 1.5rem;
+}
+
+.filters-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .filters-wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.search-container {
+  position: relative;
+  width: 100%;
+  max-width: 350px;
+  margin-bottom: 1rem;
+}
+@media (min-width: 768px) {
+  .search-container {
+    margin-bottom: 0;
+  }
+}
+
+#search-input {
+  width: 100%;
+  padding: 12px 20px 12px 45px;
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  color: #e0e0e0;
+  background-color: rgba(42, 42, 78, 0.5);
+  border: 2px solid #4a4a7f;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+#search-input::placeholder {
+  color: rgba(224, 224, 224, 0.5);
+  font-style: italic;
+}
+#search-input:focus {
+  outline: none;
+  border-color: #f0c74f;
+  background-color: #2a2a4e;
+  box-shadow: 0 0 20px rgba(240, 199, 79, 0.25);
+}
+
+.search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+.search-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  fill: #f0c74f;
+}
+
+.search-container:focus-within .search-icon {
+  color: #f0c74f;
+  opacity: 1;
+}
+
+#filter-container,
+#weapon-filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: #2a2a4e;
+  color: #e0e0e0;
+  border: 1px solid #4a4a7f;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.filter-btn:hover {
+  background-color: rgb(59.85, 59.85, 111.15);
+  color: #f0c74f;
+  border-color: #f0c74f;
+}
+.filter-btn.active {
+  background-color: #f0c74f;
+  color: #1a1a2e;
+  border-color: #f0c74f;
+  box-shadow: 0 0 15px rgba(240, 199, 79, 0.4);
+}
+
+.filter-icon {
+  width: 20px;
+  height: 20px;
+}
+
+#character-list-container,
+#weapon-list-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 12px;
+  justify-items: stretch;
+}
+@media (min-width: 768px) {
+  #character-list-container,
+  #weapon-list-container {
+    padding: 0 1.5rem 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+.no-results {
+  grid-column: 1/-1;
+  text-align: center;
+  font-size: 1.5rem;
+  opacity: 0.6;
+  padding: 2rem;
+}
+
+#char-counter {
+  text-align: center;
+  color: #e0e0e0;
+  opacity: 0.6;
+  font-size: 0.9rem;
+  margin-top: -1rem;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+#weapon-pagination,
+#character-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 1rem 0 2rem 0;
+}
+
+.pagination-btn {
+  min-width: 32px;
+  height: 32px;
+  padding: 0 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #4a4a7f;
+  background-color: #2a2a4e;
+  color: #e0e0e0;
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.pagination-btn:hover:not(:disabled) {
+  background-color: rgb(56.28, 56.28, 104.52);
+  border-color: #f0c74f;
+  color: #f0c74f;
+}
+.pagination-btn.active {
+  background-color: #f0c74f;
+  color: #1a1a2e;
+  border-color: #f0c74f;
+  box-shadow: 0 0 12px rgba(240, 199, 79, 0.5);
+}
+.pagination-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+@media (max-width: 768px) {
+  .intro-content h1 {
+    font-size: 2rem;
+  }
+}
+.home-page {
+  padding-top: 0 !important;
+}
+
+.hero {
+  position: relative;
+  height: 80vh;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  object-fit: cover;
+  opacity: 0.4;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  padding: 1.5rem;
+  backdrop-filter: blur(5px);
+}
+.hero-content h1 {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  color: #f0c74f;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+}
+.hero-content p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: #e0e0e0;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.8);
+}
+@media (max-width: 768px) {
+  .hero-content p {
+    font-size: 1.1rem;
+  }
+}
+.hero-content .cta-button {
+  display: inline-block;
+  text-decoration: none;
+  margin: 0.25rem;
+  padding: 1rem 2rem;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: #f0c74f;
+  color: #1a1a2e;
+  border: 1px solid #f0c74f;
+  border-radius: 8px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 15px rgba(240, 199, 79, 0.4);
+}
+.hero-content .cta-button:hover {
+  background-color: rgb(244.0052356021, 213.9528795812, 125.9947643979);
+  box-shadow: 0 0 20px rgba(240, 199, 79, 0.6);
+}
+.hero-content .cta-button:active {
+  transform: translateY(-1px);
+}
+
+.home-section {
+  padding: 3rem 0;
+}
+.home-section:nth-child(odd) {
+  background-color: #1a1a2e;
+}
+.home-section:nth-child(even) {
+  background-color: rgb(31.525, 31.525, 55.775);
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section-title {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 2.5rem;
+  color: #f0c74f;
+  margin-bottom: 2rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.section-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #f0c74f;
+  margin: 0.5rem auto 0;
+  opacity: 0.5;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.category-card {
+  background-color: #2a2a4e;
+  padding: 2rem 1.5rem;
+  border-radius: 16px;
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid #4a4a7f;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.category-card .cat-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.category-card .cat-icon-img {
+  width: 40px;
+  height: 40px;
+  display: block;
+  fill: #f0c74f;
+}
+.category-card h3 {
+  color: #ffffff;
+  margin-bottom: 0.25rem;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.category-card p {
+  color: #e0e0e0;
+  opacity: 0.7;
+  font-size: 0.9rem;
+}
+.category-card:not(.coming-soon):hover {
+  transform: translateY(-5px);
+  background-color: rgb(50.925, 50.925, 94.575);
+  border-color: #f0c74f;
+  box-shadow: 0 5px 20px rgba(240, 199, 79, 0.2);
+}
+.category-card:not(.coming-soon):hover h3 {
+  color: #f0c74f;
+}
+.category-card.coming-soon {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: rgba(42, 42, 78, 0.3);
+}
+
+.news-grid {
+  display: grid;
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  .news-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.news-card {
+  background-color: #2a2a4e;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 3px solid #f0c74f;
+}
+.news-card .news-date {
+  display: block;
+  font-size: 0.8rem;
+  opacity: 0.6;
+  margin-bottom: 0.5rem;
+}
+.news-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+.news-card p {
+  font-size: 0.95rem;
+  opacity: 0.8;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  padding-bottom: 20px;
+}
+
+.featured-card {
+  background-color: #2a2a4e;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(74, 74, 127, 0.5);
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 768px) {
+  .featured-card {
+    flex-direction: row;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+}
+
+.featured-image-wrapper {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+@media (min-width: 768px) {
+  .featured-image-wrapper {
+    width: 50%;
+    height: 400px;
+  }
+}
+.featured-image-wrapper .featured-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.5s ease;
+}
+
+.featured-card:hover .featured-image {
+  transform: scale(1.05);
+}
+
+.featured-info {
+  padding: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.featured-name {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 0.25rem;
+}
+
+.featured-element {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+
+.featured-desc {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.8;
+  margin-bottom: 2rem;
+}
+
+.featured-cta {
+  display: inline-block;
+  padding: 0.5rem 2rem;
+  background-color: transparent;
+  color: #f0c74f;
+  border: 2px solid #f0c74f;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.featured-cta:hover {
+  background-color: #f0c74f;
+  color: #1a1a2e;
+  transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+  .featured-name {
+    font-size: 2rem;
+  }
+}
+.character-detail,
+.weapon-detail {
+  max-width: 800px;
+  margin: 2rem auto;
+  background-color: #2a2a4e;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid #4a4a7f;
+}
+.character-detail .detail-header,
+.weapon-detail .detail-header {
+  width: 100%;
+  background-color: rgb(16.7916666667, 16.7916666667, 29.7083333333);
+  text-align: center;
+  border-bottom: 1px solid #4a4a7f;
+  position: relative;
+}
+.character-detail .detail-header .detail-image,
+.weapon-detail .detail-header .detail-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+.character-detail .detail-content,
+.weapon-detail .detail-content {
+  padding: 2rem;
+  text-align: center;
+}
+.character-detail .detail-content .detail-title,
+.weapon-detail .detail-content .detail-title {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 2rem;
+  color: #f0c74f;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+@media (max-width: 768px) {
+  .character-detail .detail-content .detail-title,
+  .weapon-detail .detail-content .detail-title {
+    font-size: 1rem;
+  }
+}
+.character-detail .detail-content .detail-title::after,
+.weapon-detail .detail-content .detail-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #f0c74f;
+  margin: 0.5rem auto 0;
+  opacity: 0.5;
+}
+.character-detail .detail-content,
+.weapon-detail .detail-content {
+  /* tag d'élément (utilisé sur character.html et weapon.html) */
+}
+.character-detail .detail-content .element-tag,
+.weapon-detail .detail-content .element-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 2rem;
+  border-radius: 50px;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-color: rgba(26, 26, 46, 0.5);
+  color: #e0e0e0;
+  border: 2px solid #4a4a7f;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+.character-detail .detail-content .element-tag[data-element=Pyro],
+.weapon-detail .detail-content .element-tag[data-element=Pyro] {
+  background-color: rgba(211, 61, 62, 0.15);
+  color: #d33d3e;
+  border-color: #d33d3e;
+  box-shadow: 0 0 25px rgba(211, 61, 62, 0.4);
+}
+.character-detail .detail-content .element-tag[data-element=Pyro]:hover,
+.weapon-detail .detail-content .element-tag[data-element=Pyro]:hover {
+  background-color: rgba(211, 61, 62, 0.25);
+  box-shadow: 0 0 35px rgba(211, 61, 62, 0.6);
+}
+.character-detail .detail-content .element-tag[data-element=Anemo],
+.weapon-detail .detail-content .element-tag[data-element=Anemo] {
+  background-color: rgba(96, 191, 122, 0.15);
+  color: #60bf7a;
+  border-color: #60bf7a;
+  box-shadow: 0 0 25px rgba(96, 191, 122, 0.4);
+}
+.character-detail .detail-content .element-tag[data-element=Anemo]:hover,
+.weapon-detail .detail-content .element-tag[data-element=Anemo]:hover {
+  background-color: rgba(96, 191, 122, 0.25);
+  box-shadow: 0 0 35px rgba(96, 191, 122, 0.6);
+}
+.character-detail .detail-content .element-tag[data-element=Hydro],
+.weapon-detail .detail-content .element-tag[data-element=Hydro] {
+  background-color: rgba(73, 100, 186, 0.15);
+  color: #4964ba;
+  border-color: #4964ba;
+  box-shadow: 0 0 25px rgba(73, 100, 186, 0.4);
+}
+.character-detail .detail-content .element-tag[data-element=Hydro]:hover,
+.weapon-detail .detail-content .element-tag[data-element=Hydro]:hover {
+  background-color: rgba(73, 100, 186, 0.25);
+  box-shadow: 0 0 35px rgba(73, 100, 186, 0.6);
+}
+.character-detail .detail-content .element-tag[data-element=Lumino],
+.weapon-detail .detail-content .element-tag[data-element=Lumino] {
+  background-color: rgba(240, 199, 79, 0.15);
+  color: #f0c74f;
+  border-color: #f0c74f;
+  box-shadow: 0 0 25px rgba(240, 199, 79, 0.4);
+}
+.character-detail .detail-content .element-tag[data-element=Lumino]:hover,
+.weapon-detail .detail-content .element-tag[data-element=Lumino]:hover {
+  background-color: rgba(240, 199, 79, 0.25);
+  box-shadow: 0 0 35px rgba(240, 199, 79, 0.6);
+}
+.character-detail .detail-content .element-tag[data-element=Electro],
+.weapon-detail .detail-content .element-tag[data-element=Electro] {
+  background-color: rgba(172, 81, 231, 0.15);
+  color: #ac51e7;
+  border-color: #ac51e7;
+  box-shadow: 0 0 25px rgba(172, 81, 231, 0.4);
+}
+.character-detail .detail-content .element-tag[data-element=Electro]:hover,
+.weapon-detail .detail-content .element-tag[data-element=Electro]:hover {
+  background-color: rgba(172, 81, 231, 0.25);
+  box-shadow: 0 0 35px rgba(172, 81, 231, 0.6);
+}
+.character-detail .detail-content .element-tag[data-element=Umbro],
+.weapon-detail .detail-content .element-tag[data-element=Umbro] {
+  background-color: rgba(170, 61, 101, 0.15);
+  color: #aa3d65;
+  border-color: #aa3d65;
+  box-shadow: 0 0 25px rgba(170, 61, 101, 0.4);
+}
+.character-detail .detail-content .element-tag[data-element=Umbro]:hover,
+.weapon-detail .detail-content .element-tag[data-element=Umbro]:hover {
+  background-color: rgba(170, 61, 101, 0.25);
+  box-shadow: 0 0 35px rgba(170, 61, 101, 0.6);
+}
+.character-detail .detail-content,
+.weapon-detail .detail-content {
+  /* future description de personnage (optionnelle) */
+}
+.character-detail .detail-content .detail-description,
+.weapon-detail .detail-content .detail-description {
+  margin-top: 2rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.character-detail .detail-content,
+.weapon-detail .detail-content {
+  /* ligne de tags pour weapon.html (élément / type / type de dégâts) */
+}
+.character-detail .detail-content .detail-tags,
+.weapon-detail .detail-content .detail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.character-detail .detail-content,
+.weapon-detail .detail-content {
+  /* tags type d'arme et type de dégâts */
+}
+.character-detail .detail-content .weapon-type-tag,
+.character-detail .detail-content .damage-type-tag,
+.weapon-detail .detail-content .weapon-type-tag,
+.weapon-detail .detail-content .damage-type-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 1rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background-color: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.85);
+}
+.character-detail .detail-content .damage-type-tag,
+.weapon-detail .detail-content .damage-type-tag {
+  background-color: rgba(0, 0, 0, 0.35);
+}
+.character-detail .detail-content,
+.weapon-detail .detail-content {
+  /* texte descriptif de l'arme */
+}
+.character-detail .detail-content .weapon-description,
+.weapon-detail .detail-content .weapon-description {
+  margin-top: 1rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.character-detail .detail-content,
+.weapon-detail .detail-content {
+  /* bloc stats chiffrées de l'arme (atk, crit, etc.) */
+}
+.character-detail .detail-content .weapon-stats,
+.weapon-detail .detail-content .weapon-stats {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: left;
+}
+.character-detail .detail-content .weapon-stats h2,
+.weapon-detail .detail-content .weapon-stats h2 {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.6rem;
+  margin: 0 0 0.5rem 0;
+  color: #ffffff;
+  text-align: center;
+}
+.character-detail .detail-content .weapon-stats .stats-list,
+.weapon-detail .detail-content .weapon-stats .stats-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.25rem;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .character-detail .detail-content .weapon-stats .stats-list,
+  .weapon-detail .detail-content .weapon-stats .stats-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.character-detail .detail-content .weapon-stats .stats-list li,
+.weapon-detail .detail-content .weapon-stats .stats-list li {
+  font-size: 0.95rem;
+  color: #e0e0e0;
+  opacity: 0.9;
+}
+.character-detail .detail-content .weapon-stats .stats-list li strong,
+.weapon-detail .detail-content .weapon-stats .stats-list li strong {
+  color: #ffffff;
+}
+.character-detail .detail-content,
+.weapon-detail .detail-content {
+  /* lien de retour vers la liste associée */
+}
+.character-detail .detail-content .back-link,
+.weapon-detail .detail-content .back-link {
+  margin-top: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  font-size: 0.9rem;
+  color: #f0c74f;
+  text-decoration: none;
+}
+.character-detail .detail-content .back-link:hover,
+.weapon-detail .detail-content .back-link:hover {
+  text-decoration: underline;
+}
+
+.detail-weapons {
+  margin-top: 2rem;
+  text-align: left;
+}
+.detail-weapons .detail-subtitle {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+.detail-weapons .detail-weapons-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.detail-weapons .weapons-loading,
+.detail-weapons .no-weapons {
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+.detail-weapons {
+  /* mise en forme spécifique des cartes d'armes dans la section détail */
+}
+.detail-weapons .weapon-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.detail-weapons .weapon-card .card-image-wrapper {
+  height: 150px;
+}
+@media (min-width: 768px) {
+  .detail-weapons .weapon-card .card-image-wrapper {
+    height: 170px;
+  }
+}
+.detail-weapons .weapon-card .card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0.5rem 0.5rem;
+}
+.detail-weapons .weapon-card .bis-tag {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #ffd700;
+}
+.detail-weapons .weapon-card .weapon-notes {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  #character-detail-container,
+  #weapon-detail-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+#tierlist-section {
+  max-width: 1200px;
+  margin: 0 auto 2.5rem;
+  padding: 0 1.5rem 2rem;
+}
+
+#tierlist-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+@media (max-width: 992px) {
+  #tierlist-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 576px) {
+  #tierlist-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tier-column {
+  background-color: rgba(42, 42, 78, 0.95);
+  border-radius: 16px;
+  border: 2px solid #4a4a7f;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* entête de chaque colonne (rang SSS / S / A / B) */
+.tier-header {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 3rem;
+  font-weight: bolder;
+  text-align: center;
+  padding: 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.tier-body {
+  flex: 1;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  /* les cartes restent en haut de la colonne, sans étirer les lignes */
+  align-content: flex-start;
+}
+
+/* couleurs spécifiques appliquées par rang via data-tier */
+.tier-column[data-tier=SSS] {
+  border-color: #ff1744;
+}
+.tier-column[data-tier=SSS] .tier-header {
+  background: linear-gradient(180deg, #ff1744, rgb(227, 0, 44.0301724138));
+  color: #1a1a2e;
+}
+
+.tier-column[data-tier=S] {
+  border-color: #ff9100;
+}
+.tier-column[data-tier=S] .tier-header {
+  background: linear-gradient(180deg, #ff9100, #cc7400);
+  color: #1a1a2e;
+}
+
+.tier-column[data-tier=A] {
+  border-color: #ffd600;
+}
+.tier-column[data-tier=A] .tier-header {
+  background: linear-gradient(180deg, #ffd600, rgb(204, 171.2, 0));
+  color: #1a1a2e;
+}
+
+.tier-column[data-tier=B] {
+  border-color: #00e676;
+}
+.tier-column[data-tier=B] .tier-header {
+  background: linear-gradient(180deg, #00e676, rgb(0, 179, 91.8347826087));
+  color: #1a1a2e;
+}
+
+/* ajustements de taille pour les cards dans la tier list */
+.tier-card .card-image-wrapper {
+  height: 110px;
+}
+@media (min-width: 768px) {
+  .tier-card .card-image-wrapper {
+    height: 140px;
+  }
+}
+.tier-card .card-title {
+  font-size: 0.85rem;
+}
+@media (min-width: 768px) {
+  .tier-card .card-title {
+    font-size: 1rem;
+  }
+}
+.tier-card .card-content {
+  padding: 0.25rem 0.25rem;
+}
+@media (min-width: 768px) {
+  .tier-card .card-content {
+    padding: 0.5rem;
+  }
+}
+
+#admin-form-container {
+  max-width: 700px;
+  margin-top: calc(73px + 2rem);
+  margin-bottom: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.5rem 2rem;
+  background-color: #2a2a4e;
+  border-radius: 16px;
+  border: 1px solid #4a4a7f;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+#admin-form-container h1 {
+  margin-top: 0;
+  text-align: center;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #f0c74f;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+#admin-form-container .register-subtitle {
+  margin-bottom: 2rem;
+  opacity: 0.85;
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+#admin-form-container .login-subtitle {
+  margin-bottom: 2rem;
+  opacity: 0.85;
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  color: #e0e0e0;
+  opacity: 0.9;
+  text-align: left;
+}
+.form-group input[type=text],
+.form-group input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  color: #e0e0e0;
+  background-color: rgba(26, 26, 46, 0.5);
+  border: 2px solid #4a4a7f;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  text-align: left;
+}
+.form-group input[type=text]::placeholder,
+.form-group input[type=password]::placeholder {
+  color: rgba(224, 224, 224, 0.5);
+  font-style: italic;
+}
+.form-group input[type=text]:focus,
+.form-group input[type=password]:focus {
+  outline: none;
+  border-color: #f0c74f;
+  background-color: #2a2a4e;
+  box-shadow: 0 0 20px rgba(240, 199, 79, 0.25);
+}
+.form-group input[type=text]:read-only,
+.form-group input[type=password]:read-only {
+  background-color: rgba(26, 26, 46, 0.8);
+  opacity: 0.7;
+  cursor: not-allowed;
+  border-color: #4a4a7f;
+}
+
+.submit-btn {
+  display: inline-block;
+  margin: 0.25rem;
+  padding: 1rem 2rem;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: #f0c74f;
+  color: #1a1a2e;
+  border: 1px solid #f0c74f;
+  border-radius: 8px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 15px rgba(240, 199, 79, 0.4);
+}
+.submit-btn:hover {
+  background-color: rgb(244.0052356021, 213.9528795812, 125.9947643979);
+  box-shadow: 0 0 20px rgba(240, 199, 79, 0.6);
+}
+
+#form-message {
+  margin-top: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  font-size: 1.1rem;
+}
+#form-message.success {
+  color: #33cc33;
+}
+#form-message.error {
+  color: #ff6b6b;
+}
+
+.admin-list-container {
+  margin-top: 4rem;
+  border-top: 2px solid #4a4a7f;
+  padding-top: 2rem;
+  text-align: left;
+}
+.admin-list-container h2 {
+  text-align: center;
+  color: #e0e0e0;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#management-list {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+#management-list p {
+  text-align: center;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+.management-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgba(26, 26, 46, 0.5);
+  border: 1px solid #4a4a7f;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  transition: all 0.2s ease;
+}
+.management-item:hover {
+  background-color: rgba(42, 42, 78, 0.8);
+  border-color: #f0c74f;
+}
+.management-item .item-name {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #e0e0e0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-right: 1rem;
+}
+
+.item-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.edit-btn,
+.delete-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.delete-btn {
+  background-color: #ff6b6b;
+  color: #ffffff;
+}
+.delete-btn:hover {
+  background-color: #ff9e9e;
+  box-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+}
+
+.edit-btn {
+  background-color: #b17ff0;
+  color: #ffffff;
+}
+.edit-btn:hover {
+  background-color: rgb(204.8181818182, 172.6503496503, 245.3496503497);
+  box-shadow: 0 0 10px rgba(177, 127, 240, 0.5);
+}
+
+.cancel-btn {
+  display: inline-block;
+  margin: 0.25rem;
+  padding: 1rem 2rem;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: transparent;
+  color: #e0e0e0;
+  border: 1px solid #4a4a7f;
+  border-radius: 8px;
+  cursor: pointer;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: all 0.2s ease;
+}
+.cancel-btn:hover {
+  background-color: #2a2a4e;
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  #admin-form-container {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  #admin-form-container h1 {
+    font-size: 2rem;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

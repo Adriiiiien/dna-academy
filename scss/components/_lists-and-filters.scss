@@ -1,0 +1,236 @@
+// styles des intros de page, filtres, barre de recherche, listes et pagination
+
+@use '../base/variables' as *;
+
+.page-intro {
+  background-color: $color-bg-card;
+  padding: $space-xl * 2 0;
+  text-align: center;
+  border-bottom: 1px solid $color-border-primary;
+  margin-bottom: $space-xl;
+}
+
+.intro-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 $space-lg;
+
+  h1 {
+    font-family: $font-family-heading;
+    font-size: 3rem;
+    color: $hue-lumino;
+    margin-bottom: $space-md;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: $color-text-base;
+    opacity: 0.8;
+    line-height: 1.6;
+  }
+}
+
+#filters-section {
+  max-width: $breakpoint-xl;
+  margin: 0 auto $space-xl;
+  padding: 0 $space-lg;
+}
+
+.filters-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+  align-items: center;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.search-container {
+  position: relative;
+  width: 100%;
+  max-width: 350px;
+  margin-bottom: $space-md;
+
+  @media (min-width: 768px) {
+    margin-bottom: 0;
+  }
+}
+
+#search-input {
+  width: 100%;
+  padding: 12px 20px 12px 45px;
+  font-family: $font-family-base;
+  font-size: 1rem;
+  color: $color-text-base;
+  background-color: rgba($color-bg-card, 0.5);
+  border: 2px solid $color-border-primary;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+
+  &::placeholder { color: rgba($color-text-base, 0.5); font-style: italic; }
+  &:focus { outline: none; border-color: $hue-lumino; background-color: $color-bg-card; box-shadow: 0 0 20px rgba($hue-lumino, 0.25); }
+}
+
+.search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+// style du svg de l’icône de recherche
+.search-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  fill: $hue-lumino;
+}
+
+// effet focus sur l’input (met en avant l’icône)
+.search-container:focus-within .search-icon {
+  color: $hue-lumino;
+  opacity: 1;
+}
+
+#filter-container,
+#weapon-filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-sm;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+// boutons de filtre (éléments / types d’armes)
+.filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-xs;
+  padding: $space-sm $space-md;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  font-weight: $font-weight-bold;
+  background-color: $color-bg-card;
+  color: $color-text-base;
+  border: 1px solid $color-border-primary;
+  border-radius: $border-radius-md;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: lighten($color-bg-card, 10%);
+    color: $hue-lumino;
+    border-color: $hue-lumino;
+  }
+  
+  &.active {
+    background-color: $hue-lumino;
+    color: $color-bg-page;
+    border-color: $hue-lumino;
+    box-shadow: 0 0 15px rgba($hue-lumino, 0.4);
+  }
+}
+
+.filter-icon {
+  width: 20px;
+  height: 20px;
+}
+
+#character-list-container,
+#weapon-list-container {
+  max-width: $breakpoint-xl;
+  margin: 0 auto;
+  padding: 0 $space-lg $space-xl;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 12px;
+  justify-items: stretch;
+
+  @media (min-width: 768px) {
+      padding: 0 $space-lg $space-xl;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: $space-lg;
+  }
+}
+
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 1.5rem;
+    opacity: 0.6;
+    padding: $space-xl;
+}
+
+// compteur "showing X characters/weapons"
+#char-counter {
+  text-align: center;
+  color: $color-text-base;
+  opacity: 0.6;
+  font-size: 0.9rem;
+  margin-top: -1rem;
+  margin-bottom: $space-lg;
+  font-style: italic;
+}
+
+#weapon-pagination,
+#character-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $space-xs;
+  margin: $space-md 0 $space-xl 0;
+}
+
+// boutons de pagination (précédent / suivant / pages)
+.pagination-btn {
+  min-width: 32px;
+  height: 32px;
+  padding: 0 $space-sm;
+  border-radius: $border-radius-sm;
+  border: 1px solid $color-border-primary;
+  background-color: $color-bg-card;
+  color: $color-text-base;
+  font-family: $font-family-base;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover:not(:disabled) {
+    background-color: lighten($color-bg-card, 8%);
+    border-color: $hue-lumino;
+    color: $hue-lumino;
+  }
+
+  &.active {
+    background-color: $hue-lumino;
+    color: $color-bg-page;
+    border-color: $hue-lumino;
+    box-shadow: 0 0 12px rgba($hue-lumino, 0.5);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+}
+
+@media (max-width: 768px) {
+  .intro-content {
+    h1 {
+      font-size: 2rem;
+    }
+  }
+}

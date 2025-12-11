@@ -1,0 +1,158 @@
+// mise en forme du footer global : blocs de contenu, liens, bandeau du bas, lien admin
+
+@use '../base/variables' as *;
+
+// wrapper principal du footer
+.main-footer {
+  background-color: darken($color-bg-page, 8%);
+  color: $color-text-base;
+  border-top: 1px solid rgba($hue-lumino, 0.1);
+  font-size: 0.95rem;
+}
+
+// grille de contenu (logo, liens rapides, communauté)
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $space-xl $space-lg;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: $space-xl;
+  align-items: center;
+}
+
+// colonnes génériques du footer
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+  text-align: left;
+  align-items: flex-start;
+
+  @media (min-width: 900px) {
+    &:nth-child(1) {
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    &:nth-child(2) {
+      align-items: center;
+      text-align: center;
+    }
+
+    &:nth-child(3) {
+      align-items: flex-end;
+      text-align: right;
+    }
+  }
+}
+
+// bloc branding (logo + tagline)
+.branding {
+  .footer-logo {
+    font-family: $font-family-heading;
+    font-size: 1.5rem;
+    color: $hue-lumino;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: $space-sm;
+
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+  }
+
+  .footer-logo__img {
+    height: 28px;
+    width: auto;
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.35));
+  }
+
+  .footer-logo__text {
+    display: inline-block;
+  }
+
+  .footer-tagline {
+    opacity: 0.7;
+    line-height: 1.6;
+    max-width: 300px;
+  }
+}
+
+// titres de colonne (quick links, community…)
+.footer-title {
+  font-family: $font-family-heading;
+  font-size: 1.1rem;
+  color: white;
+  margin-bottom: $space-sm;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+// liste des liens du footer
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+
+  li {
+    a {
+      text-decoration: none;
+      color: $color-text-base;
+      opacity: 0.6;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+
+      &:hover {
+        opacity: 1;
+        color: $hue-lumino;
+      }
+    }
+  }
+}
+
+// bandeau inférieur (copyright + lien admin)
+.footer-bottom {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: $space-md;
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: $space-md;
+
+  span {
+    opacity: 0.5;
+  }
+
+  @media (max-width: 576px) {
+    justify-content: center;
+  }
+}
+
+// lien "administration" discret en bas de page
+.footer-admin-link {
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: $color-text-base;
+  opacity: 0.5;
+  transition: all 0.2s ease;
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &:hover {
+    opacity: 1;
+    color: $hue-lumino;
+  }
+}

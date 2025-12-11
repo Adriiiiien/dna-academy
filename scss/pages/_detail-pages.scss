@@ -1,0 +1,268 @@
+@use '../base/variables' as *;
+
+// styles communs aux pages de détail personnage et arme
+.character-detail,
+.weapon-detail {
+  max-width: 800px;
+  margin: $space-xl auto;
+  background-color: $color-bg-card;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  border: 1px solid $color-border-primary;
+
+  .detail-header {
+    width: 100%;
+    background-color: darken($color-bg-page, 5%);
+    text-align: center;
+    border-bottom: 1px solid $color-border-primary;
+    position: relative;
+
+    .detail-image {
+      max-width: 100%;
+      height: auto;
+      max-height: 500px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  .detail-content {
+    padding: $space-xl;
+    text-align: center;
+
+    .detail-title {
+      font-family: $font-family-heading;
+      font-size: 2rem;
+      color: $hue-lumino;
+      margin-bottom: $space-lg;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+
+      @media (max-width: 768px) {
+          font-size: 1rem;
+        }
+
+      &::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: $hue-lumino;
+        margin: $space-sm auto 0;
+        opacity: 0.5;
+      }
+    }
+
+    /* tag d'élément (utilisé sur character.html et weapon.html) */
+    .element-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: $space-sm $space-xl;
+      border-radius: 50px;
+      font-family: $font-family-heading;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-transform: uppercase; 
+      letter-spacing: 2px;
+      background-color: rgba($color-bg-page, 0.5);
+      color: $color-text-base;
+      border: 2px solid $color-border-primary;
+      transition: all 0.3s ease;
+      cursor: default;
+
+      @each $name, $color in $element-colors {
+        &[data-element="#{$name}"] {
+          background-color: rgba($color, 0.15);
+          color: $color;
+          border-color: $color;
+          box-shadow: 0 0 25px rgba($color, 0.4);
+
+          &:hover {
+            background-color: rgba($color, 0.25);
+            box-shadow: 0 0 35px rgba($color, 0.6);
+          }
+        }
+      }
+    }
+
+    /* future description de personnage (optionnelle) */
+    .detail-description {
+      margin-top: $space-xl;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      opacity: 0.9;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ligne de tags pour weapon.html (élément / type / type de dégâts) */
+    .detail-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: $space-sm;
+      margin-bottom: $space-md;
+    }
+
+    /* tags type d'arme et type de dégâts */
+    .weapon-type-tag,
+    .damage-type-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: $space-xs $space-md;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: $font-weight-bold;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background-color: rgba(255, 255, 255, 0.06);
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .damage-type-tag {
+      background-color: rgba(0, 0, 0, 0.35);
+    }
+
+    /* texte descriptif de l'arme */
+    .weapon-description {
+      margin-top: $space-md;
+      font-size: 1rem;
+      line-height: 1.6;
+      opacity: 0.9;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* bloc stats chiffrées de l'arme (atk, crit, etc.) */
+    .weapon-stats {
+      margin-top: $space-lg;
+      padding: $space-md;
+      background-color: rgba(0, 0, 0, 0.25);
+      border-radius: $border-radius-md;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: left;
+
+      h2 {
+        font-family: $font-family-heading;
+        font-size: 1.6rem;
+        margin: 0 0 $space-sm 0;
+        color: $color-text-heading;
+        text-align: center;
+      }
+
+      .stats-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: $space-xs;
+        text-align: center;
+
+        @media (min-width: $breakpoint-md) {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        li {
+          font-size: 0.95rem;
+          color: $color-text-base;
+          opacity: 0.9;
+
+          strong {
+            color: $color-text-heading;
+          }
+        }
+      }
+    }
+
+    /* lien de retour vers la liste associée */
+    .back-link {
+      margin-top: $space-lg;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: $space-xs;
+      font-size: 0.9rem;
+      color: $hue-lumino;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.detail-weapons {
+  margin-top: $space-xl;
+  text-align: left;
+
+  .detail-subtitle {
+    font-family: $font-family-heading;
+    font-size: 1.6rem;
+    margin-bottom: $space-md;
+    color: $color-text-heading;
+  }
+
+  .detail-weapons-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: $space-md;
+  }
+
+  .weapons-loading,
+  .no-weapons {
+    font-size: 0.95rem;
+    opacity: 0.8;
+  }
+
+  /* mise en forme spécifique des cartes d'armes dans la section détail */
+  .weapon-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .card-image-wrapper {
+      height: 150px;
+
+      @media (min-width: $breakpoint-md) {
+        height: 170px;
+      }
+    }
+
+    .card-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: $space-sm $space-sm;
+    }
+
+    .bis-tag {
+      margin-top: $space-xs;
+      font-size: 0.8rem;
+      font-weight: $font-weight-bold;
+      color: $color-rarity-5;
+    }
+
+    .weapon-notes {
+      margin-top: $space-xs;
+      font-size: 0.8rem;
+      opacity: 0.8;
+    }
+  }
+}
+
+  @media (max-width: $breakpoint-md) {
+  #character-detail-container,
+  #weapon-detail-container {
+    padding-left: $space-lg;
+    padding-right: $space-lg;
+  }
+}

@@ -1,0 +1,103 @@
+// carte générique pour personnages et armes : image, titre, tags, effet de hover
+
+@use '../base/variables' as *;
+
+.character-card {
+  background-color: $color-bg-card;
+  border-radius: $border-radius-md;
+  border: 1px solid $color-border-primary;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+
+  // effet de hover global sur la carte
+  &:hover {
+    transform: translateY(-5px);
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+
+  .card-image-wrapper {
+      width: 100%;
+      height: 100px;
+      overflow: hidden;
+      @media (min-width: 768px) { height: 220px; }
+  }
+
+  .card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.5s ease;
+  }
+  // zoom léger de l’image au survol
+  &:hover .card-image { transform: scale(1.05); }
+
+  .card-content {
+    padding: 4px 2px;
+    text-align: center;
+    background-color:rgba(26, 26, 46, 0.5);
+    @media (min-width: 768px) { padding: $space-md; }
+  }
+
+  .card-title {
+    font-family: $font-family-heading;
+    font-size: 0.8rem;
+    margin: 0 0 4px 0;
+    color: $color-text-heading;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    @media (min-width: 768px) { font-size: 1.2rem; margin-bottom: $space-sm; }
+  }
+
+  .card-detail {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center; 
+    gap: 4px;
+    
+    @media (min-width: 768px) {
+      gap: 6px;
+    }
+  }
+
+  // badges pour élément / type d’arme
+  .element-tag,
+  .weapon-type-tag {
+      font-size: 0.65rem;
+      font-weight: bold;
+      padding: 1px 6px;
+      border-radius: 8px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      
+      @media (min-width: 768px) { 
+        font-size: 0.9rem; 
+        padding: 2px 8px; 
+        border-radius: 12px; 
+      }
+  }
+
+  .element-tag {
+    background-color: rgba(0,0,0,0.3);
+  }
+
+  .weapon-type-tag {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  // variation de bordure et glow selon l’élément (data-element)
+  @each $name, $color in $element-colors {
+    &[data-element="#{$name}"] {
+      border-color: $color;
+      .element-tag { color: $color; }
+      &:hover { box-shadow: 0 0 20px rgba($color, 0.3); }
+    }
+  }
+}

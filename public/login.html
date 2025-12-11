@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DNA Academy - Login</title>
+  <link rel="icon" type="image/png" href="assets/images/logo-yellow.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <div id="header-placeholder"></div>
+
+  <main>
+    <section id="admin-form-container">
+      <h1>Login</h1>
+
+      <p class="login-subtitle">
+        Login to your account.
+        <br />
+        <span class="login-subtitle">
+          (Administration is reserved for <strong>admin</strong> accounts.)
+        </span>
+      </p>
+
+      <form id="login-form" autocomplete="off">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            id="username"
+            name="username"
+            type="text"
+            placeholder="Your username"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Your password"
+            required
+          />
+        </div>
+
+        <button type="submit" class="submit-btn">Login</button>
+
+        <a href="register.html" class="cancel-btn">Register</a>
+        <a href="index.html" class="cancel-btn">Back</a>
+
+        <div id="form-message"></div>
+      </form>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/session.js"></script>
+  <script src="js/header-effect.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

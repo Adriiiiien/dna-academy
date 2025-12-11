@@ -1,0 +1,64 @@
+// box-sizing global (pour un calcul de tailles cohérent partout)
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// suppression des marges par défaut navigateur
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+// base typographique neutre (le reste est géré dans _base.scss)
+body {
+  line-height: 1.5;
+}
+
+// listes sans style par défaut (tu remets des bullets si besoin)
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// images & vidéos responsives par défaut
+img,
+picture,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// liens : pas de soulignement forcé, couleur gérée ailleurs
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+// boutons & inputs : héritent de la police globale
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+// boutons : curseur pointeur, style neutre de base
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+// champs de formulaire : on retire l'outline par défaut (géré via styles custom)
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
+  outline: none;
+}

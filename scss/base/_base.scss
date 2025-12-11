@@ -1,0 +1,46 @@
+@use 'variables' as *;
+
+// styles globaux sur la page
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  font-weight: $font-weight-regular;
+  background-color: $color-bg-page;
+  color: $color-text-base;
+}
+
+// styles communs aux titres (hiérarchie typographique)
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-heading;
+  font-weight: $font-weight-bold;
+  color: $color-text-heading;
+  line-height: 1.2;
+  margin-bottom: $space-md;
+}
+
+// tailles de police par niveau de titre
+h1 {
+  font-size: $font-size-h1;
+}
+h2 {
+  font-size: $font-size-h2;
+}
+h3 {
+  font-size: $font-size-h3;
+}
+
+// zone principale sous le header fixe
+main {
+  padding-top: $header-height;
+  margin: 0 auto;
+}
+
+// style générique pour afficher les erreurs
+.error-message {
+  color: $color-state-error;
+  text-align: center;
+  background-color: rgba($color-state-error, 0.1);
+  padding: $space-md;
+  border: 1px solid $color-state-error;
+  border-radius: $border-radius-sm;
+}

@@ -1,0 +1,259 @@
+@use '../base/variables' as *;
+
+// conteneur principal pour les pages admin / login / register
+#admin-form-container {
+  max-width: 700px;
+  margin-top: calc($header-height + $space-xl);
+  margin-bottom: $space-xl;
+  margin-left: auto;
+  margin-right: auto;
+  padding: $space-lg $space-xl;
+  background-color: $color-bg-card;
+  border-radius: $border-radius-lg;
+  border: 1px solid $color-border-primary;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  text-align: center; 
+
+  h1 {
+    margin-top: 0;
+    text-align: center;
+    font-family: $font-family-heading;
+    color: $hue-lumino;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .register-subtitle {
+    margin-bottom: $space-xl;
+    opacity: 0.85;
+    font-size: $font-size-large;
+    line-height: 1.5;
+  }
+
+  .login-subtitle {
+    margin-bottom: $space-xl;
+    opacity: 0.85;
+    font-size: $font-size-large;
+    line-height: 1.5;
+  }
+}
+
+// styles communs aux groupes de champs
+.form-group {
+  margin-bottom: $space-lg;
+
+  label {
+    display: block;
+    margin-bottom: $space-sm;
+    font-weight: $font-weight-bold;
+    color: $color-text-base;
+    opacity: 0.9;
+    text-align: left; 
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 12px 20px;
+    font-family: $font-family-base;
+    font-size: 1rem;
+    color: $color-text-base;
+    background-color: rgba($color-bg-page, 0.5);
+    border: 2px solid $color-border-primary;
+    border-radius: $border-radius-md;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    text-align: left;
+
+    &::placeholder { 
+      color: rgba($color-text-base, 0.5); 
+      font-style: italic; 
+    }
+    
+    &:focus { 
+      outline: none; 
+      border-color: $hue-lumino; 
+      background-color: $color-bg-card; 
+      box-shadow: 0 0 20px rgba($hue-lumino, 0.25); 
+    }
+
+    &:read-only {
+      background-color: rgba($color-bg-page, 0.8);
+      opacity: 0.7;
+      cursor: not-allowed;
+      border-color: $color-border-primary;
+    }
+  }
+}
+
+// bouton principal (submit)
+.submit-btn {
+  display: inline-block; 
+  margin: $space-xs;
+  padding: $space-md $space-xl;
+  font-family: $font-family-heading;
+  font-size: 1rem;
+  font-weight: $font-weight-bold;
+  background-color: $hue-lumino;
+  color: $color-bg-page;
+  border: 1px solid $hue-lumino;
+  border-radius: $border-radius-md;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 15px rgba($hue-lumino, 0.4);
+
+  &:hover {
+    background-color: lighten($hue-lumino, 10%);
+    box-shadow: 0 0 20px rgba($hue-lumino, 0.6);
+  }
+}
+
+// zone de message global (erreur / succès)
+#form-message {
+  margin-top: $space-lg;
+  font-weight: $font-weight-bold;
+  text-align: center;
+  font-size: 1.1rem;
+
+  &.success {
+    color: #33cc33;
+  }
+  &.error {
+    color: $color-state-error;
+  }
+}
+
+// bloc liste d'administration des personnages
+.admin-list-container {
+  margin-top: $space-xl * 2; 
+  border-top: 2px solid $color-border-primary; 
+  padding-top: $space-xl;
+  text-align: left;
+
+  h2 {
+    text-align: center;
+    color: $color-text-base;
+    font-family: $font-family-heading;
+    margin-bottom: $space-lg;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+}
+
+#management-list {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: $space-sm;
+
+  p {
+    text-align: center;
+    opacity: 0.7;
+    font-style: italic;
+  }
+}
+
+// ligne de gestion (un personnage = un item)
+.management-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $space-md;
+  background-color: rgba($color-bg-page, 0.5);
+  border: 1px solid $color-border-primary;
+  border-radius: $border-radius-md;
+  margin-bottom: $space-md;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: rgba($color-bg-card, 0.8);
+    border-color: $hue-lumino;
+  }
+
+  .item-name {
+    font-weight: $font-weight-bold;
+    font-size: 1.1rem;
+    color: $color-text-base;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-right: $space-md;
+  }
+}
+
+.item-actions {
+  display: flex;
+  gap: $space-sm;
+  flex-shrink: 0;
+}
+
+// boutons d'action dans la liste admin
+.edit-btn,
+.delete-btn {
+  padding: $space-sm $space-md;
+  border: none;
+  border-radius: $border-radius-sm;
+  cursor: pointer;
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.delete-btn {
+  background-color: $color-state-error;
+  color: $hue-white;
+
+  &:hover {
+    background-color: lighten($color-state-error, 10%);
+    box-shadow: 0 0 10px rgba($color-state-error, 0.5);
+  }
+}
+
+.edit-btn {
+  background-color: $color-rarity-4;
+  color: $hue-white;
+
+  &:hover {
+    background-color: lighten($color-rarity-4, 10%);
+    box-shadow: 0 0 10px rgba($color-rarity-4, 0.5);
+  }
+}
+
+// bouton secondaire (lien / retour / annulation)
+.cancel-btn {
+  display: inline-block;
+  margin: $space-xs;
+  padding: $space-md $space-xl;
+  font-family: $font-family-heading;
+  font-size: 1rem;
+  font-weight: $font-weight-bold;
+  background-color: transparent;
+  color: $color-text-base;
+  border: 1px solid $color-border-primary;
+  border-radius: $border-radius-md;
+  cursor: pointer;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: $color-bg-card;
+    color: $hue-white;
+    border-color: $hue-white;
+  }
+}
+
+// petits ajustements sur mobile
+@media (max-width: 768px) {
+  #admin-form-container {
+    margin-left: 20px;
+    margin-right: 20px;
+    
+    h1 {
+      font-size: 2rem;
+    }
+  }
+}

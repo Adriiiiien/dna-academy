@@ -1,0 +1,100 @@
+@use '../base/variables' as *;
+
+// couleurs associées à chaque rang de la tier list
+$tier-colors: (
+  "SSS": #ff1744,
+  "S":   #ff9100,
+  "A":   #ffd600,
+  "B":   #00e676
+);
+
+#tierlist-section {
+  max-width: $breakpoint-xl;
+  margin: 0 auto $space-xxl;
+  padding: 0 $space-lg $space-xl;
+}
+
+#tierlist-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $space-md;
+
+  @media (max-width: $breakpoint-lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tier-column {
+  background-color: rgba($color-bg-card, 0.95);
+  border-radius: $border-radius-lg;
+  border: 2px solid $color-border-primary;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* entête de chaque colonne (rang SSS / S / A / B) */
+.tier-header {
+  font-family: $font-family-heading;
+  font-size: 3rem;
+  font-weight:bolder;
+  text-align: center;
+  padding: $space-md 0;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.tier-body {
+  flex: 1;
+  padding: $space-md;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); // max 2 cartes par ligne
+  gap: $space-sm;
+
+  /* les cartes restent en haut de la colonne, sans étirer les lignes */
+  align-content: flex-start;
+}
+
+/* couleurs spécifiques appliquées par rang via data-tier */
+@each $tier, $color in $tier-colors {
+  .tier-column[data-tier="#{$tier}"] {
+    border-color: $color;
+
+    .tier-header {
+      background: linear-gradient(180deg, $color, darken($color, 10%));
+      color: $color-bg-page;
+    }
+  }
+}
+
+/* ajustements de taille pour les cards dans la tier list */
+.tier-card {
+  .card-image-wrapper {
+    height: 110px;
+
+    @media (min-width: $breakpoint-md) {
+      height: 140px;
+    }
+  }
+
+  .card-title {
+    font-size: 0.85rem;
+
+    @media (min-width: $breakpoint-md) {
+      font-size: 1rem;
+    }
+  }
+
+  .card-content {
+    padding: $space-xs $space-xs;
+
+    @media (min-width: $breakpoint-md) {
+      padding: $space-sm;
+    }
+  }
+}
