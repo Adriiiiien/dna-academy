@@ -227,32 +227,32 @@ L’interface admin utilise ce système pour autoriser les opérations CRUD.
 ```text
 scss/
 │
-├── base/         # reset, variables globales, typographie
-├── components/   # cards, filtres, pagination, éléments UI
-├── layout/       # header, footer
-├── pages/        # styles spécifiques à une page
-└── style.scss    # fichier compilé en CSS
+├── base/ # reset, variables globales, typographie
+├── components/ # cards, filtres, pagination, éléments UI
+├── layout/ # header, footer
+├── pages/ # styles spécifiques à une page
+└── style.scss # fichier compilé en CSS
 ```
 
 ---
 
 ## Fonctionnement global de l'application
 
-1.  Le backend expose une API REST.
-2.  Le frontend consomme les endpoints via Fetch.
-3.  Header/footer injectés dynamiquement.
-4.  Authentification stockée en LocalStorage (token JWT).
-5.  Middleware Express gère la sécurité admin.
-6.  SCSS → compilé → style.css.
+1. Le backend expose une API REST.
+2. Le frontend consomme les endpoints via Fetch.
+3. Header/footer injectés dynamiquement.
+4. Authentification stockée en LocalStorage (token JWT).
+5. Middleware Express gère la sécurité admin.
+6. SCSS → compilé → style.css.
 
 ---
 
 ## Mode Admin (CRUD Personnages)
 
 Accessible uniquement si :
-1.  L’utilisateur est connecté.
-2.  Son rôle est `admin`.
-3.  Le token est valide.
+1. L’utilisateur est connecté.
+2. Son rôle est `admin`.
+3. Le token est valide.
 
 **Fonctionnalités :**
 Ajouter un personnage /
